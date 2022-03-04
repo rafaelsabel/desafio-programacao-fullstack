@@ -23,7 +23,7 @@ afiliados também vendendo esses produtos, desde que seja paga uma comissão por
 Sua tarefa é construir uma interface web que possibilite o upload de um arquivo de transações de produtos vendidos,
 normalizar os dados e armazená-los em um banco de dados relacional.
 
-Você deve utilizar este [arquivo](PRODUCTS.txt)
+Você deve utilizar o arquivo [PRODUCTS.txt](PRODUCTS.txt) para fazer o teste manual da aplicação.
 
 # Sua aplicação deve
 
@@ -32,13 +32,19 @@ Você deve utilizar este [arquivo](PRODUCTS.txt)
    definições de interpretação do arquivo
 3. Exibir a lista das transações de produtos importadas por produtor/afiliado, com um totalizador do valor das
    transações realizadas
-4. Pode ser escrito na sua linguagem de preferência
-5. Ser simples de configurar e rodar, compatível com ambiente Unix (utilizar apenas bibliotecas grauitas ou livres)
-6. Git com commits bem descritos
-7. Pode usar qualquer banco de dados relacional
-8. Testes unitários
-9. README descrevendo o projeto e como fazer o setup
-10. Descrever como consumir as APIs
+4. Ser simples de configurar e rodar, compatível com ambiente Unix (utilizar apenas bibliotecas gratuitas ou livres)
+5. Ter um README descrevendo o projeto e como fazer o setup
+6. Ter documentacao das APIs que o backend chama no frontend.
+
+Sobre tecnologias e práticas de programação:
+
+1. Escolha a linguagem que quiser 
+2. Use qualquer banco de dados relacional
+3. Use commits pequenos no Git e escreva uma boa descrição para cada um
+4. Escreva unit tests
+5. Tente fazer o código mais legível e limpo possivel
+6. Escreva o código (nomes e comentários) em inglês. Se se sentir confortável escreva as documentações também em
+   inglês, mas pode ser em Português se preferir.
 
 # Sua aplicação não precisa
 
