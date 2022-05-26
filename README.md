@@ -2,16 +2,6 @@
 
 O intuito desse teste é avaliar os seus conhecimentos técnicos em programação.
 
----
-
-# Instruções para entrega do desafio
-
-1. Faça o fork desse repositório para a sua conta no GitHub
-2. Implemente o projeto em seu clone local
-3. Envie o link do seu repositório para seu contato Tech Recruiter na Hubla
-
----
-
 # Descrição do projeto
 
 Surgiu uma nova demanda urgente e precisamos de uma área exclusiva para fazer o upload de um arquivo das transações
@@ -80,5 +70,33 @@ Seu projeto será avaliado de acordo com os seguintes critérios:
 1. Desenvolvimento dos [requisitos básicos](#Sua-aplicação-deve)
 2. Documentação correta do setup do ambiente e execução da aplicação
 3. Cobertura de testes
+
+# Instruções para entrega do desafio
+
+1. Faça o clone desse repositório
+2. Implemente o projeto em seu clone local
+3. Crie um git-bundle com o seu trabalho, veja detalhes na próxima sessão
+4. Envie o arquivo do bundle para nós via email, para a mesma pessoa que te enviou o desafio.
+
+**Dica:** Sugerimos abrir um branch partindo da `main` para o desenvolvimento do desafio.
+
+## Criando o git-bundle
+
+Para gerar um [git bundle](https://git-scm.com/docs/git-bundle), basta rodar
+o seguinte comando, substituindo o seu nome:
+
+```
+git bundle create nome-sobrenome.bundle HEAD <nome_branch>
+```
+
+### Verificar o bundle
+
+Para verificar o arquivo antes de enviar utilize o seguinte comando:
+
+```
+git clone nome-sobrenome.bundle hubla-take-home
+```
+
+A cópia do seu trabalho vai estar em `hubla-take-home`.
 
 # Boa sorte!!!
