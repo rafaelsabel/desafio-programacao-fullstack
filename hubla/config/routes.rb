@@ -1,3 +1,11 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  devise_for :users
+
+  root to: "home#index"
+
+  resources :file_uploads, only: [:new, :create]
+
+  resources :products, except: [:index, :show] do
+    get :sales, on: :member
+  end
 end
