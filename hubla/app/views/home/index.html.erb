@@ -1,0 +1,72 @@
+<h1>Produtos</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <% if current_user.role_admin? %><th>Produtor</th><% end %>
+      <th>Preço</th>
+      <th colspan='<%= current_user.role_normal? ? 3 : 1 %>'></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @products.each do |product| %>
+      <tr>
+        <td><%= product.name %></td>
+        <% if current_user.role_admin? %><td><%= product.producer.name %></td><% end %>
+        <td><%= number_to_currency(product.price) %></td>
+        <td><%= link_to 'Vendas', sales_product_path(product) %></td>
+        <% if current_user.role_normal? %><td><%= link_to 'Editar', edit_product_path(product) %></td><% end %>
+        <% if current_user.role_normal? %><td><%= link_to 'Excluir', product, method: :delete, data: { confirm: 'Você tem certeza?' } %></td><% end %>
+      </tr>
+    <% end %>
+    <%= will_paginate @products %>
+    <% if current_user.role_normal? %><%= link_to 'Novo Produto', new_product_path %><% end %>
+    <% if current_user.role_admin? %><%= link_to 'Importar transações', new_file_upload_path %><% end %>
+  </tbody>
+</table>
+
+<% if current_user.role_normal? %>
+  <h1>Transações</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Vendas realizadas</th>
+        <th>Comissão recebida</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        <td><%= number_to_currency(@sales_amount) %></td>
+        <td><%= number_to_currency(@commission_amount) %></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <br />
+
+  <table>
+    <thead>
+      <tr>
+        <th>Tipo</th>
+        <th>Produto</th>
+        <th>Data</th>
+        <th>Valor</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @transactions.each do |transaction| %>
+        <tr>
+          <td><%= I18n.t(transaction.type, scope: [:activerecord, :attributes, :transaction, :type]) %></td>
+          <td><%= transaction.product.name %></td>
+          <td><%= transaction.date.strftime('%d/%m/%Y %H:%M:%S') %></td>
+          <td><%= number_to_currency(transaction.amount, unit: 'R$') %></td>
+        </tr>
+      <% end %>
+      <%= will_paginate @transactions %>
+    </tbody>
+  </table>
+<% end %>

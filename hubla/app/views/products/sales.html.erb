@@ -1,0 +1,51 @@
+<p id="notice"><%= notice %></p>
+
+<% if current_user.role_admin? %>
+  <h1><%= @product.name %> - <%= @producer.name %></h1>
+  <h2>Vendas do produtor</h2>
+<% else %>
+  <h1><%= @product.name %></h1>
+  <h2>Minhas vendas</h2>
+<% end %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Vendas realizadas</th>
+      <th>Comissão recebida</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td><%= number_to_currency(@sales_amount) %></td>
+      <td><%= number_to_currency(@commission_amount) %></td>
+    </tr>
+  </tbody>
+</table>
+
+<% if @affiliates.present? %>
+  <h2>Afiliados</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Vendas realizadas</th>
+        <th>Comissão paga</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @affiliates.each do |user| %>
+        <tr>
+          <td><%= user.name %></td>
+          <td><%= number_to_currency(user.sales_amount) %></td>
+          <td><%= number_to_currency(user.commission_amount) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
+
+<%= link_to 'Voltar', root_path %>

@@ -1,0 +1,33 @@
+<h1>Importar transações</h1>
+
+<%= form_with model: current_user, url: file_uploads_path, method: :post, local: true do |f| %>
+  <%= f.file_field :files, multiple: true %><br /><br />
+  <%= f.submit 'Importar' %>
+<% end %>
+
+<% if @files.present? %>
+  <h1>Arquivos importados</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Data</th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @files.find_each do |file| %>
+        <tr>
+          <td><%= file.filename %></td>
+          <td><%= file.created_at.strftime('%d/%m/%Y %H:%M:%S') %></td>
+          <td><%= link_to 'Download', rails_blob_path(file) %></td>
+        </tr>
+      <% end %>
+      <%= will_paginate @files %>
+    </tbody>
+  </table>
+<% end %>
+
+<%= link_to 'Voltar', root_path %>
