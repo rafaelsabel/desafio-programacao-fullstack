@@ -1,24 +1,41 @@
-# README
+# Getting Started
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Configurar SMTP (opcional)
 
-Things you may want to cover:
+Para configurar o envio de e-mail, altere no arquivo `development.rb` os parâmetros `user_name` e `password` com os dados do seu gmail.
 
-* Ruby version
+## Servidor
+Para instalar todas as dependências, execute os comandos:
 
-* System dependencies
+```bash
+docker-compose build
+docker-compose run app rails db:create
+docker-compose run app rails db:migrate
+docker-compose run app rails db:seed
+```
 
-* Configuration
+Levantar a aplicação em modo de desenvolvimento:
 
-* Database creation
+```bash
+docker-compose up
+```
 
-* Database initialization
+Para acessar o sistema acesse a página:
 
-* How to run the test suite
+```
+http://localhost:3001
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+## Testes
 
-* Deployment instructions
+Para executar os testes, execute o comando:
 
-* ...
+```bash
+docker-compose run app rspec
+```
+
+## Para acessar
+
+- no arquivo `db/seeds.rb` existem os e-mails dos usuários cadastrados;
+- o usuário administrador possui permissão para importar o arquivo de transações e visualizar as transações de todos os produtos;
+- os usuários do tipo normal possuem permissão para criar, visualizar, editar e excluir seus produtos, visualizar suas próprias transações e visualizar os seus afiliados;
